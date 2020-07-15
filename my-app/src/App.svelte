@@ -48,16 +48,15 @@ const cleanPersona=()=>{
 }
 	
 
-
 </script>
 
 <main>
 	<h1>Axios en Svelte</h1>
 	<h3>Haga clic en un nombre para ver mas detalles</h3>
 	
-	<Lista getUser={getUser} datos={datos} />
+	<Lista {getUser} {datos} />
 
-	<Recuadro persona={persona} cleanPersona={cleanPersona} direccion={direccion} loader={loader} />
+	<Recuadro {persona} {cleanPersona} {direccion} {loader} />
 </main>
 
 <style>
