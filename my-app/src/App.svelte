@@ -40,10 +40,11 @@ const getUser=async (user)=>{
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1>Axios en Svelte</h1>
+	<h3>Haga clic en un nombre para ver mas detalles</h3>
 	<ul>
 	{#each datos as dato (dato.id)}
-		<li on:click={getUser(dato.id)}>
+		<li class="puntero" on:click={getUser(dato.id)}>
 			{dato.name}
 		</li>
 	{/each}
@@ -71,6 +72,13 @@ const getUser=async (user)=>{
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+	}
+	ul{
+		padding: 0;
+		margin: 10, 0;
+	}
+	.puntero{
+		cursor: pointer;
 	}
 	li{
 		list-style: none;
