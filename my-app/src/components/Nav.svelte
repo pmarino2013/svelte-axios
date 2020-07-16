@@ -15,7 +15,7 @@
    
   </nav>
   <div>
-  
+    
     <Route path="about" component="{About}" />
     <Route path="/" component="{Home}"></Route>
   </div>
