@@ -15,6 +15,20 @@ if($loginState){
 </script>
 
 <style>
+.formulario{
+	display:inline-block;
+
+}
+.formulario input{
+	border-radius: 10px;
+	text-align: center;
+}
+
+.btn-container{
+	margin-top: 10px;
+}
+
+
 .btn-login{
 		width: 100px;
 		height: 40px;
@@ -53,6 +67,19 @@ if($loginState){
 	
 </style>
 
+		
 <div class="ButtonLogin">
-<button class={$loginState ? 'btn-logout': 'btn-login'}  on:click={setLogin}>{$loginState ? 'Logout':'Login'}</button>
+	<form >
+	{#if !$loginState}
+		<div class="formulario" >
+		
+			<input type="text" placeholder="Ingrese su email"/>
+
+		</div>
+	{/if}
+	<div class="btn-container">
+		<button type="button" class={$loginState ? 'btn-logout': 'btn-login'}  on:click={setLogin}>{$loginState ? 'Logout':'Login'}</button>
+	</div>
+	</form>
 </div>
+
