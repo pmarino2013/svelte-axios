@@ -4,6 +4,10 @@ import {loginState} from '../store/store.js';
 import Lista from '../components/Lista.svelte';
 import Recuadro from '../components/Recuadro.svelte';
 import ButtonLogin from '../components/ButtonLogin.svelte'
+
+//importando para usar bootstrap
+
+
 import axios from 'axios';
 //importo del ciclo de vida el onMount
 import {onMount} from 'svelte';
@@ -13,6 +17,10 @@ import {onMount} from 'svelte';
 	let persona={};
 	let loader=false;
 	let direccion={};
+	const color=[
+		"success"
+
+	];
 	
 	//Cuando se monta el componente
 	onMount(()=>{
