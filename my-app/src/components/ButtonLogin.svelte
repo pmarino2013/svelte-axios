@@ -1,14 +1,40 @@
 <script>
 import {loginState} from '../store/store.js';
 
-const setLogin=()=>{
+import axios from 'axios';
 
-if($loginState){
-	loginState.set(false);
-}else{
+let correoUser='';
+let usuario=[];
 
-	loginState.set(true);
+const validar= async (email)=>{
+	if($loginState){
+		loginState.set(false);
+	}else{
+
+		const respuesta = await axios.get(`https://jsonplaceholder.typicode.com/users?email=${email}`)
+		
+		try {
+			
+			
+			usuario=respuesta.data;
+			console.log(usuario);
+			if(usuario.length>0){
+			loginState.set(true);
+			correoUser='';
+	
+			}
+					
+		
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
 }
+
+const setLogin=()=>{
+validar(correoUser);
+console.log(usuario)
 
 	
 }
@@ -73,12 +99,14 @@ if($loginState){
 	{#if !$loginState}
 		<div class="formulario" >
 		
-			<input type="text" placeholder="Ingrese su email"/>
+			<input type="text" placeholder="Ingrese su email" bind:value={correoUser}/>
 
 		</div>
 	{/if}
 	<div class="btn-container">
-		<button type="button" class={$loginState ? 'btn-logout': 'btn-login'}  on:click={setLogin}>{$loginState ? 'Logout':'Login'}</button>
+		<button type="button" class={$loginState ? 'btn-logout': 'btn-login'}  
+		on:click={validar(correoUser)}>{$loginState ? 'Logout':'Login'}
+		</button>
 	</div>
 	</form>
 </div>
