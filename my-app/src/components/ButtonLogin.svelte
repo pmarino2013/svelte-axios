@@ -128,7 +128,7 @@
         {$loginState ? 'Logout' : 'Login'}
       </button>
     </div>
-    {#if alerta}
+    {#if alerta && !loading}
       <div class="mensaje">
         <span class="alert">Usuario no registrado</span>
 
