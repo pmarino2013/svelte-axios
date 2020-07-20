@@ -6,10 +6,14 @@
   let correoUser = "";
   let usuario = [];
   let alerta = false;
+  let loading = false;
 
   const validar = async email => {
+    loading = true;
+
     if ($loginState) {
       loginState.set(false);
+      loading = false;
     } else {
       const respuesta = await axios.get(
         `https://jsonplaceholder.typicode.com/users?email=${email}`
@@ -28,6 +32,7 @@
       } catch (error) {
         console.error(error);
       }
+      loading = false;
     }
   };
 
@@ -116,6 +121,7 @@
     {/if}
     <div class="btn-container">
       <button
+        disabled={loading}
         type="button"
         class={$loginState ? 'btn-logout' : 'btn-login'}
         on:click={validar(correoUser)}>
